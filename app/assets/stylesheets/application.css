@@ -1,0 +1,62 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+  *= require bootstrap-datepicker
+ *= require_self
+ *= require dataTables/jquery.dataTables
+ *= require jquery.ui.core
+ *= require jquery.ui.theme
+*= require dataTables/jquery.dataTables.bootstrap
+ *= require dataTables/src/demo_table_jui
+ *= require_tree .
+
+ */
+#banner{
+    margin: auto;
+   /* padding: 10px;*/
+    background: #ffffff;
+}
+#user_nav{
+    float: right;
+    margin: auto;
+    padding-right: 40px;
+}
+body{
+    width: 95%;
+
+}
+#rdiv{
+    float:left;
+    width:150px;
+    height:300px;
+    border: 1px solid #666;
+    padding:10px;
+    padding-left:12px;
+    margin-left:12px ;
+    margin-bottom:10px;
+    margin-top:20px;
+}
+ul{
+    padding:10px 10px 10px 20px;
+}
+li{
+    padding:10px;
+}
+#footer {
+    clear: both;
+    width: 100%;
+    background: none repeat scroll 0 0 #CCCCCC;
+    color: #666666;
+    font-size: 62%;
+    padding: 10px 0 6px;
+    text-align: center;
+    text-transform: uppercase;
+    margin: 10px;
+}
