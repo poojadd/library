@@ -1,0 +1,55 @@
+<table class="display" data-source="<%= mybooks_url(format: "json") %>>
+ <thead>
+  <tr>
+
+    <th>Title</th>
+
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+ </thead>
+  <tbody>
+  <% @mybooks.each   do |book| %>
+
+      <tr>
+
+
+        <td style=" text-align:left"> <%= book.title %> </td>
+        <td> <%= link_to 'Show', book %></td>
+
+
+        <td style=" text-align:center">
+          <% if can? :update, @mybook %>
+              <%= link_to "Edit", edit_mybook_path(book.id) %>
+          <% end %></td>
+        <td style=" text-align:center">
+
+          <a id= "issue" onclick="issueBook('<%= book.id  %>','<%= book.title %>')" href="#"  > Issue </a>
+
+
+        </td>
+        <td style=" text-align:center"><%= link_to 'Destroy', book, :confirm => 'Are you sure?', :method => :delete %></td>
+
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+<div id="dialog" title="Basic dialog" style="display: none" >
+  <%= render 'issue' %>
+</div>
+
+<script>
+  function issueBook(book_id, book_name){
+      var mybook = book_id.toString();
+      document.getElementById("title").innerHTML =book_name ;
+     $("#book_user_mybook_id").val(mybook);
+      $( "#dialog" ).dialog();
+
+  }
+
+/*  $("#issue").click(function(){
+      $( "#dialog" ).dialog();
+  });*/
+
+</script>

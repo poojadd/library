@@ -1,0 +1,33 @@
+<%= form_for(@bookuser) do |f| %>
+
+    <div>
+      <%= f.label :Book %>
+      <%= collection_select(:bookuser, :mybook_id, Mybook.all, :id, :title) %>
+
+    </div>
+    <div>
+      <%= f.label :Subject %>
+      <%= collection_select(:bookuser, :user_id, User.all, :id, :name) %>
+
+    </div>
+    <div>
+      <%= f.label :IssueDate %>
+      <input id="issuedate" type="text" data-behaviour='datepicker'>
+    </div>
+
+
+    <div>
+      <%= f.label :ReturnDate %>
+      <input id="datepicker" type="text" >
+    </div>
+
+
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+<% end %>
+<script>
+    $(function() {
+        $( "#datepicker" ).datepicker();
+    });
+</script>

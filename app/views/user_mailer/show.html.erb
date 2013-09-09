@@ -1,0 +1,28 @@
+<% if @users.blank? %>
+    <p>There are not any books currently in the system.</p>
+<% end %>
+<h1>Listing Books</h1>
+
+<table>
+  <tr>
+
+    <th>Title</th>
+    <th>Text</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+
+  <% @users.each do |book| %>
+
+      <tr>
+        <% p book %>
+        <td><%= book.name %> </td>
+        <td><%= book.email %></td>
+
+        <td><%= link_to 'Destroy', book, :confirm => 'Are you sure?', :method => :delete %></td>
+
+      </tr>
+  <% end %>
+</table>

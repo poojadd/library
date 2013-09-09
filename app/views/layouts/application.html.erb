@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mylibrary</title>
+  <%= stylesheet_link_tag "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css"/>
+
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+
+
+  <%= csrf_meta_tags %>
+
+  <div id="banner" style="text-align: center; margin-left: 10  ">
+
+    <%= image_tag('eLibraryBanner3.png') %>
+
+  </div>
+
+    <div id="user_nav">
+
+      <% if current_user %>
+
+          Logged in as <%= current_user.name %>.
+          <%= link_to "Log out", logout_path %>
+      <% else %>
+          <%= link_to "Sign up", signup_path %> |
+          <%= link_to "log in", signin_path %>
+      <% end %>
+
+      <script type="text/javascript ">
+
+          $(document).on("focus", "[data-behaviour~='datepicker']", function (e) {
+              $(this).datepicker({"format": "yyyy-mm-dd", "weekStart": 1, "autoclose": true});
+          });
+      </script>
+    </div>
+
+</head>
+<body>
+<div>
+  <div id="rdiv">
+    <ul>
+      <li> <%= link_to "MySubjects", mysubjects_path %></li>
+      <li> <%= link_to "Mybook", mybooks_path %></li>
+      <li> <%= link_to "User", users_path %></li>
+    </ul>
+  </div>
+  <div style=" float:right; width:950px;margin-bottom:10px; ">
+    <%= yield %>
+  </div>
+</div>
+<div id="footer"> © 2013 CSS BASICS by Splashpress Media. Contact us</div>
+</body>
+</html>

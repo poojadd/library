@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<% p @mysub %>
+<table>
+  <tr>
+    <td>Title:</td>
+    <td>  <%= @mybook.title %></td>
+  </tr>
+  <tr>
+    <td>Price:</td>
+    <td> <%= @mybook.price %></td>
+  </tr>
+  <tr>
+    <td>Subject: </td>
+    <td>
+      <%= @mybook.mysubject.name %></td>
+  </tr>
+  <tr>
+    <td>Created at:</td>
+    <td> <%= @mybook.created_at %></td>
+  </tr>
+  <tr>
+    <td>Description:</td>
+    <td> <%= @mybook.description %></td>
+  </tr>
+
+</table>
+
+<%= link_to "Tag",  mybook_tags_path(@mybook)  %>
+
+<% if can? :update, @mybook %>
+    <%= link_to "Edit", edit_mybook_path(@mybook) %>
+<% end %>
+<!--<%= link_to 'Edit', edit_mybook_path(@mybook) %> -->
+<%= link_to 'Back', mybooks_path %>

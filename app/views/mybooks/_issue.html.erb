@@ -1,0 +1,17 @@
+<%= form_for(@bookuser) do |f| %>
+
+    <%= f.hidden_field  :mybook_id  %>
+
+    <div>
+          <p id="title" ></p>
+      </div>
+    <div>
+      <%= f.label :User %>
+      <%= collection_select(:user, :user_id, User.all, :id, :name) %>
+
+    </div>
+
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+<% end %>
