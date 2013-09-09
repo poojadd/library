@@ -1,7 +1,0 @@
-<h1><%= @mysubject.name -%></h1>
-<ul>
-  <% @mysubject.books.each do |c| %>
-      <li><%= link_to c.name, :action => "show", :id => c.id -%></li>
-  <% end %>
-</ul>
-
