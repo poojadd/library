@@ -6,8 +6,8 @@
   <%= javascript_include_tag "application" %>
   <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css"/>
 
-  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+  <!--<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>-->
 
 
   <%= csrf_meta_tags %>
@@ -45,6 +45,9 @@
       <li> <%= link_to "MySubjects", mysubjects_path %></li>
       <li> <%= link_to "Mybook", mybooks_path %></li>
       <li> <%= link_to "User", users_path %></li>
+      <% if can? :read, BookUser %>
+          <li>   <%= link_to "Issues Books", book_users_path  %>     </li>
+      <% end %>
     </ul>
   </div>
   <div style=" float:right; width:950px;margin-bottom:10px; ">
