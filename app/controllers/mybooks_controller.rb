@@ -11,10 +11,16 @@ class MybooksController < ApplicationController
   end
 
   def index
+    #
+    #@search = Mybook.search do
+    #  fulltext params[:search]
+    #
+    #end
+    #@mybooks = @search.results
 
     @bookuser = BookUser.new
 
-     @mybooks = Mybook.availables
+    @mybooks = Mybook.availables
     respond_to do |format|
       format.html
       format.json { render j  son: MybooksDatatable.new(view_context) }
@@ -49,12 +55,15 @@ class MybooksController < ApplicationController
     end
   end
 
+
   def search
+    @bookuser = BookUser.new
     @mybooks = Mybook.search params[:search]
     respond_to do |format|
       format.html { render :action => "index" }
     end
   end
+
 
   def edit
     @mybook = Mybook.find(params[:id])
