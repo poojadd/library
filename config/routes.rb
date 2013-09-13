@@ -1,8 +1,6 @@
 Mylibrary::Application.routes.draw do
   get "password_resets/new"
 
-  get "users/new"
-
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -28,10 +26,9 @@ Mylibrary::Application.routes.draw do
   #       get 'sold'
   #     end
   #   end
-
-  resources :book_users
-
   get "welcome/index"
+
+
   resources :mybooks do
 
     get :search, :on => :collection
@@ -44,9 +41,12 @@ Mylibrary::Application.routes.draw do
   end
   Mylibrary::Application.routes.draw do
     match '/issue', to: 'mybooks#issue'
+
     get "password_resets/new"
     resources :password_resets
     resources :users
+    resources :book_users
+    match '/return', to: 'book_users#return'
     resources :sessions, only: [:new, :create, :destroy]
     match '/signup', to: 'users#new'
     match '/signin', to: 'sessions#new'
