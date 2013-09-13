@@ -7,9 +7,9 @@
 #  mybook_id  :integer
 #  issuedate  :datetime
 #  returndate :datetime
-#  returned   :boolean
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  returned   :boolean
 #
 
 class BookUser < ActiveRecord::Base

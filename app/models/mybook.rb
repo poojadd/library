@@ -21,13 +21,35 @@ class Mybook < ActiveRecord::Base
   validates :price, :presence => true
 
   scope :availables, Proc.new {
-    joins("left outer join book_users on book_users.mybook_id = mybooks.id").where("book_users.id is null")
+    joins("left outer join book_users on book_users.mybook_id = mybooks.id").where("book_users.returned = ?", true)
   }
+
 
 
   def self.search(search)
     search_condition = "%" + search + "%"
-    find(:all, :conditions => ['title LIKE ? OR description LIKE ?', search_condition, search_condition])
+    #search_id = BookUser.select("mybook_id")
+    #ids = []
+    #search_id.each do |id|
+    #  ids <<  id[:mybook_id]
+    #
+    #end
+    #
+    #p '======================================='
+    #p ids
+    #p '======================================='
+
+    find(:all, :conditions => ['title LIKE ? OR description LIKE ? ', search_condition, search_condition])
   end
 
+=begin
+  searchable do
+    text :title
+    text :tags do
+      tags.map { |tag| tag.name }
+    end
+    float :price
+
+  end
+=end
 end
