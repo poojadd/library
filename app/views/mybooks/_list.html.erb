@@ -1,55 +1,61 @@
-<table class="display" data-source="<%= mybooks_url(format: "json") %>>
- <thead>
+<table id="example" style=" width: 100%" >
+  <thead>
   <tr>
 
     <th>Title</th>
 
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Show</th>
+    <th>Edit</th>
+    <th>Issue</th>
+    <th>Destroy</th>
+
+
   </tr>
- </thead>
+  </thead>
   <tbody>
-  <% @mybooks.each   do |book| %>
-
+  <% @mybooks.each do |book| %>
       <tr>
-
-
-        <td style=" text-align:left"> <%= book.title %> </td>
-        <td> <%= link_to 'Show', book %></td>
-
-
-        <td style=" text-align:center">
+        <td> <%= book.title %> </td>
+        <td> <%= link_to 'Show', book %> </td>
+        <td>
           <% if can? :update, @mybook %>
               <%= link_to "Edit", edit_mybook_path(book.id) %>
-          <% end %></td>
-        <td style=" text-align:center">
-
-          <a id= "issue" onclick="issueBook('<%= book.id  %>','<%= book.title %>')" href="#"  > Issue </a>
-
-
+          <% end %>
         </td>
-        <td style=" text-align:center"><%= link_to 'Destroy', book, :confirm => 'Are you sure?', :method => :delete %></td>
+        <td>
+          <a id="issue" onclick="issueBook('<%= book.id  %>','<%= book.title %>')" href="#"> Issue </a>
+        </td>
+        <td><%= link_to 'Destroy', book, :confirm => 'Are you sure?', :method => :delete %></td>
 
       </tr>
   <% end %>
   </tbody>
 </table>
-<div id="dialog" title="Basic dialog" style="display: none" >
+
+<div id="dialog" title="Basic dialog" style="display: none">
   <%= render 'issue' %>
 </div>
 
 <script>
-  function issueBook(book_id, book_name){
-      var mybook = book_id.toString();
-      document.getElementById("title").innerHTML =book_name ;
-     $("#book_user_mybook_id").val(mybook);
-      $( "#dialog" ).dialog();
+    function issueBook(book_id, book_name) {
 
-  }
+        var mybook = book_id.toString();
 
-/*  $("#issue").click(function(){
-      $( "#dialog" ).dialog();
-  });*/
+        document.getElementById("title").innerHTML = book_name;
+
+        $("#book_user_mybook_id").val(mybook);
+
+        $( "#dialog" ).dialog();
+        alert ("hello") ;
+
+    }
+
+    $(document).ready(function() {
+        $('#example').dataTable();
+    } );
+
+    /*  $("#issue").click(function(){
+     $( "#dialog" ).dialog();
+     });*/
 
 </script>

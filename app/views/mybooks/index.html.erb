@@ -1,13 +1,10 @@
 <% if @mybooks.blank? %>
     <p>There are not any books currently in the system.</p>
-<% else %>
-    <div id="search">
-      <%= render :partial => 'mybooks/search' %>
-    </div>
+
 <% end %>
 
         <div style=" float: left; width: 30px;"></div>
-<div>
+<div id="demo">
 <h1 style=" margin-left: 20 ">Listing Books</h1>
 
 <div id="book-list-container">
