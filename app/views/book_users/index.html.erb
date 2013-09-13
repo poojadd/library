@@ -7,11 +7,11 @@
 <table>
   <tr>
 
-    <th>user_id</th>
-    <th>mybook_id</th>
-    <th>issuedate</th>
-    <th>returndate</th>
-    <th>returned</th>
+    <th> User</th>
+    <th> Book</th>
+    <th> Issue Date</th>
+    <th> Return Date</th>
+    <th> Returned</th>
     <th></th>
   </tr>
 
@@ -27,7 +27,7 @@
         <td><%= idate.strftime("%m/%d/%y") %></td>
         <% rdate = bookuser.returndate %>
         <td><%= rdate.strftime("%m/%d/%y")%></td>
-        <td><%= link_to 'Return', bookuser, :confirm => 'Are you sure?', :method => :delete %></td>
+        <td><%= link_to 'Return', return_path(bookuser.id) %></td>
 
       </tr>
   <% end %>
